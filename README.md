@@ -1,1 +1,163 @@
 # colab-file-download
+
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMSQs4p56r/so3eepHbsJ2M",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/MasHunterOfficial/colab-file-download/blob/main/colab_file_download.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# You can download large files that have the extension . such as **mp4, zip,tar**,etc.. (**Must have file extension**) ।‌First, click the **Connect** button to start."
+      ],
+      "metadata": {
+        "id": "SBeiD_zkb-I_"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "6_Vnx5zqb22w"
+      },
+      "outputs": [],
+      "source": [
+        "!df -h"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Before downloading any file, check how much storage you have! You can check your storage using the command below.  Must see : **Used** **Avail**\n",
+        "\n",
+        "\n",
+        "```\n",
+        "!df -h\n",
+        "```\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "2vxVLf8vdFTC"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Before downloading the file, be sure to connect your Google account.**The file downloaded from here will be saved in this **My Drive/colab-files** directory on your drive."
+      ],
+      "metadata": {
+        "id": "eufydPMxd4Eo"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Automatic download just one click.\n",
+        "\n",
+        "you need to define download **link** and define **save file name**"
+      ],
+      "metadata": {
+        "id": "2EFZIAYUbw4S"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Google Drive মাউন্ট করা\n",
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n",
+        "\n",
+        "# ফোল্ডারের নাম নির্ধারণ\n",
+        "folder_name = \"colab-files\"\n",
+        "folder_path = f\"/content/drive/My Drive/{folder_name}\"\n",
+        "\n",
+        "# নির্দিষ্ট ফোল্ডার তৈরি করা (যদি না থাকে)\n",
+        "import os\n",
+        "if not os.path.exists(folder_path):\n",
+        "    os.makedirs(folder_path)\n",
+        "\n",
+        "    # ফাইল ডাউনলোড করা\n",
+        "    !wget -O PixelOS_mojito-13.0-20221122-0318.zip \"https://altushost-swe.dl.sourceforge.net/project/pixelos-releases/thirteen/mojito/PixelOS_mojito-13.0-20221122-0318.zip?viasf=1\"\n",
+        "\n",
+        "    # ফাইলটি Google Drive-এ মুভ করা\n",
+        "    !mv PixelOS_mojito-13.0-20221122-0318.zip \"{folder_path}/\"\n",
+        "\n",
+        "    print(f\"ফাইলটি Google Drive-এ '{folder_name}' ফোল্ডারের মধ্যে মুভ করা হয়েছে!\")"
+      ],
+      "metadata": {
+        "id": "T-lcfd5Vd3jp"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step by Step Process:\n",
+        "\n",
+        "Run the above code\n",
+        "\n",
+        "\n",
+        "```\n",
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n",
+        "```\n",
+        "\n",
+        "\n",
+        "You will get a link, click on it\n",
+        "\n",
+        "Select your Google account and grant permission\n",
+        "\n",
+        "Your Google Drive will mount to the /content/drive folder"
+      ],
+      "metadata": {
+        "id": "fA7t9QDreQe5"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import urllib.request\n",
+        "\n",
+        "# ডাউনলোড লিংক\n",
+        "url = \"Link_Hare\"\n",
+        "\n",
+        "# ফাইল সেভের নাম\n",
+        "save_as = \"File-Name\"\n",
+        "\n",
+        "# ফাইল ডাউনলোড ও সেভ করা\n",
+        "urllib.request.urlretrieve(url, save_as)\n",
+        "\n",
+        "print(f\"Download complete: {save_as}\")"
+      ],
+      "metadata": {
+        "id": "a9gypIxahIzk"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
